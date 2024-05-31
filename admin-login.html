@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login - Student-Teacher Appointment Booking</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Admin Login</h1>
+    
+    <form id="adminLoginForm">
+      <div class="form-group">
+        <label for="adminPhoneNumber">Phone Number:</label>
+        <input type="text" id="adminPhoneNumber" name="adminPhoneNumber" value="1234567890" disabled>
+      </div>
+      <div class="form-group">
+        <label for="adminPassword">Password:</label>
+        <input type="password" id="adminPassword" name="adminPassword" value="adminpassword" disabled>
+      </div>
+      <button type="submit" class="btn">Login</button>
+    </form>
+  </div>
+<script>
+document.getElementById('adminLoginForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Get the entered phone number and password
+  const phoneNumber = document.getElementById('adminPhoneNumber').value;
+  const password = document.getElementById('adminPassword').value;
+
+  // Check if the entered credentials are correct (fixed values for demonstration purposes)
+  const validPhoneNumber = '1234567890';
+  const validPassword = 'adminpassword';
+
+  if (phoneNumber === validPhoneNumber && password === validPassword) {
+    // Redirect to admin management page upon successful login
+    window.location.href = 'admin-management.html';
+  } else {
+    alert('Invalid phone number or password. Please try again.');
+  }
+});
+
+</script>
+</body>
+</html>

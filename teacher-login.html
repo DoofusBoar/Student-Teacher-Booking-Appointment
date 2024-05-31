@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher Login - Student-Teacher Appointment Booking</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+.login-link {
+  margin-top: 15px;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Teacher Login</h1>
+    <form id="teacherLoginForm">
+      <div class="form-group">
+        <label for="teacherPhoneNumber">Phone Number:</label>
+        <input type="text" id="teacherPhoneNumber" name="teacherPhoneNumber" required>
+      </div>
+      <div class="form-group">
+        <label for="teacherPassword">Password:</label>
+        <input type="password" id="teacherPassword" name="teacherPassword" required>
+      </div>
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+  </div>
+
+  <script>
+document.getElementById('teacherLoginForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const phoneNumber = document.getElementById('teacherPhoneNumber').value;
+  const password = document.getElementById('teacherPassword').value;
+
+  // Replace with the actual fixed credentials for teacher login
+  const fixedPhoneNumber = '1234567890';
+  const fixedPassword = 'password123';
+
+  if (phoneNumber === fixedPhoneNumber && password === fixedPassword) {
+    alert('Login successful');
+    window.location.href = 'teacher-management.html';
+  } else {
+    alert('Invalid phone number or password');
+  }
+});
+  </script>
+</body>
+</html>

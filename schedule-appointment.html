@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schedule Appointment - Student-Teacher Appointment Booking</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Schedule Appointment</h1>
+    <form id="scheduleAppointmentForm">
+      <div class="form-group">
+        <label for="subjectName">Subject Name:</label>
+        <input type="text" id="subjectName" name="subjectName" required>
+      </div>
+      <div class="form-group">
+        <label for="appointmentDate">Date:</label>
+        <input type="date" id="appointmentDate" name="appointmentDate" required>
+      </div>
+      <div class="form-group">
+        <label for="appointmentTime">Time:</label>
+        <input type="time" id="appointmentTime" name="appointmentTime" required>
+      </div>
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+<script>
+document.getElementById('scheduleAppointmentForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Get form values
+  const subjectName = document.getElementById('subjectName').value;
+  const appointmentDate = document.getElementById('appointmentDate').value;
+  const appointmentTime = document.getElementById('appointmentTime').value;
+
+  // Example: Send data to backend or perform further actions
+  alert(`Appointment scheduled for ${subjectName} on ${appointmentDate} at ${appointmentTime}`);
+  // Redirect to another page
+  window.location.href = 'teacher-management.html'; // Redirect to the teacher management page
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Management - Student-Teacher Appointment Booking</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.appointment-card {
+  text-align: left;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-card h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.appointment-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.book-btn,
+.message-btn {
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.book-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.book-btn:hover {
+  background-color: #218838;
+}
+
+.message-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.message-btn:hover {
+  background-color: #0056b3;
+}
+
+.message-form {
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message-form h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.message-form .form-group {
+  margin-bottom: 15px;
+}
+
+.message-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.message-form textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+.send-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.send-btn:hover {
+  background-color: #0056b3;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Management - Appointments</h1>
+    
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search for subjects, teachers, or institutes...">
+    </div>
+    
+    <div class="appointment-card" data-subject="Mathematics" data-teacher="John Doe" data-institute="XYZ High School">
+      <h2>Subject: Mathematics</h2>
+      <p>Teacher: Mr. John Doe</p>
+      <p>Institute: XYZ High School</p>
+      <button class="book-btn">Book Appointment</button>
+      <button class="message-btn">Message</button>
+    </div>
+
+    <div class="appointment-card" data-subject="Physics" data-teacher="Jane Smith" data-institute="ABC University">
+      <h2>Subject: Physics</h2>
+      <p>Teacher: Dr. Jane Smith</p>
+      <p>Institute: ABC University</p>
+      <button class="book-btn">Book Appointment</button>
+      <button class="message-btn">Message</button>
+    </div>
+
+    <div class="appointment-card" data-subject="Chemistry" data-teacher="Alan Brown" data-institute="DEF College">
+      <h2>Subject: Chemistry</h2>
+      <p>Teacher: Prof. Alan Brown</p>
+      <p>Institute: DEF College</p>
+      <button class="book-btn">Book Appointment</button>
+      <button class="message-btn">Message</button>
+    </div>
+
+    <div id="messageForm" class="message-form" style="display: none;">
+      <h2>Send a Message</h2>
+      <form id="sendMessageForm">
+        <div class="form-group">
+          <label for="messageContent">Message:</label>
+          <textarea id="messageContent" name="messageContent" required></textarea>
+        </div>
+        <button type="submit" class="send-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+document.querySelectorAll('.book-btn').forEach(function(button) {
+  button.addEventListener('click', function() {
+    alert('Booking Successful');
+    window.location.href = 'student-management.html';
+  });
+});
+
+document.querySelectorAll('.message-btn').forEach(function(button) {
+  button.addEventListener('click', function() {
+    document.getElementById('messageForm').style.display = 'block';
+  });
+});
+
+document.getElementById('sendMessageForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const messageContent = document.getElementById('messageContent').value;
+  alert('Message sent');
+  document.getElementById('messageForm').style.display = 'none';
+  window.location.href = 'student-management.html';
+});
+
+document.getElementById('searchInput').addEventListener('input', function() {
+  const filter = this.value.toLowerCase();
+  document.querySelectorAll('.appointment-card').forEach(function(card) {
+    const subject = card.getAttribute('data-subject').toLowerCase();
+    const teacher = card.getAttribute('data-teacher').toLowerCase();
+    const institute = card.getAttribute('data-institute').toLowerCase();
+    if (subject.includes(filter) || teacher.includes(filter) || institute.includes(filter)) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+});
+</script>
+</body>
+</html>

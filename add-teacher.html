@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Teacher - Student-Teacher Appointment Booking</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<style>
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* Container styles */
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styles */
+form {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+</style>
+<body>
+  <div class="container">
+    <h1>Add Teacher</h1>
+    
+    <form id="addTeacherForm">
+      <div class="form-group">
+        <label for="teacherName">Teacher Name:</label>
+        <input type="text" id="teacherName" name="teacherName" required>
+      </div>
+      <div class="form-group">
+        <label for="instituteName">Institute Name:</label>
+        <input type="text" id="instituteName" name="instituteName" required>
+      </div>
+<div class="form-group">
+        <label for="instituteAddress">Institute Address:</label>
+        <textarea id="instituteAddress" name="instituteAddress" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="experience">Experience:</label>
+        <input type="text" id="experience" name="experience" required>
+      </div>
+            <div class="form-group">
+        <label for="preferredSubjects">Preferred Subjects:</label>
+        <input type="text" id="preferredSubjects" name="preferredSubjects" required>
+      </div>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </div>
+<script>
+document.getElementById('addTeacherForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the form from submitting
+
+  // Get the form data
+  const teacherName = document.getElementById('teacherName').value;
+  const instituteName = document.getElementById('instituteName').value;
+  const experience = document.getElementById('experience').value;
+  const instituteAddress = document.getElementById('instituteAddress').value;
+  const preferredSubjects = document.getElementById('preferredSubjects').value;
+
+  // Check if all fields are filled
+    // If all fields are filled, submit the form
+alert("Teacher Added");
+ window.location.href = 'admin-management.html';
+
+ 
+
+ 
+});
+
+</script>
+
+</body>
+</html>

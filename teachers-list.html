@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teachers List - Student-Teacher Appointment Booking</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* Additional CSS for the teachers list */
+.teacher-list {
+  margin-top: 20px;
+}
+
+.teacher {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.teacher-details {
+  flex: 1;
+}
+
+.teacher-details h3 {
+  margin-top: 0;
+}
+
+.teacher-details p {
+  margin: 5px 0;
+}
+
+.teacher-buttons {
+  display: flex;
+}
+
+.teacher-buttons button {
+  padding: 5px 10px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.teacher-buttons button.update-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.teacher-buttons button.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.teacher-buttons button:hover {
+  filter: brightness(90%);
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Teachers List</h1>
+    
+    <div class="teacher-list" id="teacherList">
+      <!-- Teacher details will be dynamically added here -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Sample teacher data
+    const teachers = [
+      { name: 'Babu', institute: 'ABC School', experience: '5 years', address: '123 Street, City' },
+      { name: 'Rekha', institute: 'XYZ College', experience: '8 years', address: '456 Road, Town' },
+      { name: 'Prakyath', institute: 'DEF Academy', experience: '3 years', address: '789 Avenue, Village' }
+    ];
+
+    // Function to display the teachers list
+    function displayTeachersList() {
+      const teacherListElement = document.getElementById('teacherList');
+
+      teachers.forEach(function(teacher, index) {
+        const teacherElement = document.createElement('div');
+        teacherElement.classList.add('teacher');
+
+        const teacherDetails = document.createElement('div');
+        teacherDetails.classList.add('teacher-details');
+
+        const nameElement = document.createElement('h3');
+        nameElement.textContent = teacher.name;
+
+        const instituteElement = document.createElement('p');
+        instituteElement.textContent = 'Institute: ' + teacher.institute;
+
+        const experienceElement = document.createElement('p');
+        experienceElement.textContent = 'Experience: ' + teacher.experience;
+
+        const addressElement = document.createElement('p');
+        addressElement.textContent = 'Address: ' + teacher.address;
+
+        teacherDetails.appendChild(nameElement);
+        teacherDetails.appendChild(instituteElement);
+        teacherDetails.appendChild(experienceElement);
+        teacherDetails.appendChild(addressElement);
+
+        const teacherButtons = document.createElement('div');
+        teacherButtons.classList.add('teacher-buttons');
+
+       const updateButton = document.createElement('button');
+updateButton.classList.add('update-btn');
+updateButton.textContent = 'Update';
+updateButton.addEventListener('click', function() {
+  // Redirect to update-teacher.html with query parameters
+  window.location.href = 'update-teacher.html?name=' + encodeURIComponent(teacher.name) + '&institute=' + encodeURIComponent(teacher.institute) + '&experience=' + encodeURIComponent(teacher.experience) + '&address=' + encodeURIComponent(teacher.address);
+});
+
+
+     const deleteButton = document.createElement('button');
+deleteButton.classList.add('delete-btn');
+deleteButton.textContent = 'Delete';
+deleteButton.addEventListener('click', function() {
+  if (confirm('Are you sure you want to delete ' + teacher.name + '?')) {
+    teachers.splice(index, 1);
+    displayTeachersList();
+    alert('Deleted ' + teacher.name);
+    // Redirect to admin-management.html after deletion
+    window.location.href = 'admin-management.html';
+  }
+});
+
+
+        teacherButtons.appendChild(updateButton);
+        teacherButtons.appendChild(deleteButton);
+
+        teacherElement.appendChild(teacherDetails);
+        teacherElement.appendChild(teacherButtons);
+
+        teacherListElement.appendChild(teacherElement);
+      });
+    }
+
+    // Call the function to display the teachers list
+    displayTeachersList();
+  </script>
+</body>
+</html>

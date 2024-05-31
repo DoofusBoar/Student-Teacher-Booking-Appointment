@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Registered List - Student-Teacher Appointment Booking</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* Additional CSS for the student registered list */
+.student-list {
+  margin-top: 20px;
+}
+
+.student {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.student h3 {
+  margin-top: 0;
+}
+
+.student p {
+  margin: 5px 0;
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Registered List</h1>
+    
+    <div class="student-list" id="studentList">
+      <!-- Student details will be dynamically added here -->
+    </div>
+  </div>
+
+  <script>
+// Sample student data
+const students = [
+  { name: 'Sinchana M', phone: '1234567890', institute: 'ABC School', address: 'Arsikere' },
+  { name: 'Kiran C', phone: '9876543210', institute: 'XYZ College', address: 'Bengaluru' },
+  { name: 'Virat Kohli', phone: '5551234567', institute: 'DEF Academy', address: 'Delhi' }
+];
+
+// Function to display the student list
+function displayStudentList() {
+  const studentListElement = document.getElementById('studentList');
+
+  students.forEach(function(student) {
+    const studentElement = document.createElement('div');
+    studentElement.classList.add('student');
+
+    const nameElement = document.createElement('h3');
+    nameElement.textContent = student.name;
+
+    const phoneElement = document.createElement('p');
+    phoneElement.textContent = 'Phone: ' + student.phone;
+
+    const instituteElement = document.createElement('p');
+    instituteElement.textContent = 'Institute: ' + student.institute;
+
+    const addressElement = document.createElement('p');
+    addressElement.textContent = 'Address: ' + student.address;
+
+    studentElement.appendChild(nameElement);
+    studentElement.appendChild(phoneElement);
+    studentElement.appendChild(instituteElement);
+    studentElement.appendChild(addressElement);
+
+    studentListElement.appendChild(studentElement);
+  });
+}
+
+// Call the function to display the student list
+displayStudentList();
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher Management - Student-Teacher Appointment Booking</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.appointment-card {
+  text-align: left;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-card h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.appointment-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.approve-btn,
+.reject-btn {
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.approve-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.approve-btn:hover {
+  background-color: #218838;
+}
+
+.reject-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.reject-btn:hover {
+  background-color: #c82333;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Teacher Management - Appointments</h1>
+
+    <div class="appointment-card">
+      <h2>Student: Sinchana M</h2>
+      <p>Institute: XYZ High School</p>
+      <p>Address: 123 Main St, Cityville</p>
+      <p>Appointment Date: 2022-06-15</p>
+      <p>Appointment Time: 09:00 AM</p>
+      <p>Subject: Mathematics</p>
+      <button class="approve-btn">Approve</button>
+      <button class="reject-btn">Reject</button>
+    </div>
+
+    <div class="appointment-card">
+      <h2>Student: Kiran C</h2>
+      <p>Institute: ABC University</p>
+      <p>Address: 456 Oak St, Townsville</p>
+      <p>Appointment Date: 2022-06-16</p>
+      <p>Appointment Time: 10:00 AM</p>
+      <p>Subject: Physics</p>
+      <button class="approve-btn">Approve</button>
+      <button class="reject-btn">Reject</button>
+    </div>
+
+    <!-- Add more appointment cards as needed -->
+
+  </div>
+
+  <script>
+document.querySelectorAll('.approve-btn').forEach(function(button) {
+  button.addEventListener('click', function() {
+    var card = this.closest('.appointment-card');
+    var studentName = card.querySelector('h2').innerText;
+    // Example: Send approval request to backend or perform further actions
+    alert(`Appointment approved for ${studentName}`);
+    card.remove(); // Remove the appointment card from the list
+  });
+});
+
+document.querySelectorAll('.reject-btn').forEach(function(button) {
+  button.addEventListener('click', function() {
+    var card = this.closest('.appointment-card');
+    var studentName = card.querySelector('h2').innerText;
+    // Example: Send rejection request to backend or perform further actions
+    alert(`Appointment rejected for ${studentName}`);
+    card.remove(); // Remove the appointment card from the list
+  });
+});
+</script>
+</body>
+</html>
